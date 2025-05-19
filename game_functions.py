@@ -1,10 +1,52 @@
 
 '''
 Functions for the tic-tac-toe game.
-- need to implement the player turn (troca de jogadores de uma jogada para outra)
-- need to implement the verifier of game over
+- need to implement the verifier of game over(end game) 
+    - 
 '''
 from game_screen import screen
+from time import sleep
+import random
+import os
+
+
+players = [{"player": "1", "mark": "X"}, {"player": "2", "mark": "O"}]
+
+# random choice between the players to decide who will begin the game
+def first_player():
+    os.system('clear')
+    
+    for i in range(5):
+        os.system('clear')
+        print('escolhendo o primeiro a jogar.')
+        sleep(0.3)
+        os.system('clear')        
+        print('escolhendo o primeiro a jogar..')
+        sleep(0.3)
+        os.system('clear')
+        print('escolhendo o primeiro a jogar...')
+        sleep(0.3)
+
+    first = random.choice(players)
+    
+    return first
+
+
+# change the player each turn
+def change_player(player):
+    print(player)
+    
+    if player["player"] == "1":
+        next_to_play = players[1]
+        print(next_to_play)
+    elif player["player"] == "2":
+        next_to_play = players[0]
+        print(next_to_play)
+    else:
+        print('FUNCTION ERROR: invalid player!')
+        
+    return next_to_play
+
 
 # update the game screen
 def update_screen():
@@ -23,42 +65,42 @@ def line_transformer(line, player_option):
     return line_split
 
 # do the mark of the player in the square selected (X or O)
-def mark_one(line_number, line: list, player_option): # parametro: player
+def mark_one(line_number, line, player_option, player): # parametro: player = "X" ou "O"    
     if line_number == 2:
         for i in line:
             match player_option:
                 case '1':
-                    line[1] = "X"
+                    line[1] = player["mark"]
 
                 case '2':
-                    line[5] = "X"
+                    line[5] = player["mark"]
 
                 case '3':
-                    line[9] = "X"
+                    line[9] = player["mark"]
 
     elif line_number == 5:
         for i in line:
             match player_option:
                 case '4':
-                    line[1] = "X"
+                    line[1] = player["mark"]
 
                 case '5':
-                    line[5] = "X"
+                    line[5] = player["mark"]
 
                 case '6':
-                    line[9] = "X"
+                    line[9] = player["mark"]
 
     elif line_number == 8:
         for i in line:
             match player_option:
                 case '7':
-                    line[1] = "X"
+                    line[1] = player["mark"]
 
                 case '8':
-                    line[5] = "X"
+                    line[5] = player["mark"]
 
                 case '9':
-                    line[9] = "X"
+                    line[9] = player["mark"]
 
     return line
 
