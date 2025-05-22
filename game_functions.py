@@ -1,8 +1,6 @@
-
 '''
 Functions for the tic-tac-toe game.
 - need to implement the verifier of game over(end game) 
-    - 
 '''
 from game_screen import screen
 from time import sleep
@@ -16,7 +14,7 @@ players = [{"player": "1", "mark": "X"}, {"player": "2", "mark": "O"}]
 def first_player():
     os.system('clear')
     
-    for i in range(5):
+    for i in range(3):
         os.system('clear')
         print('escolhendo o primeiro a jogar.')
         sleep(0.3)
@@ -26,6 +24,13 @@ def first_player():
         os.system('clear')
         print('escolhendo o primeiro a jogar...')
         sleep(0.3)
+        os.system('clear')
+        print('escolhendo o primeiro a jogar....')
+        sleep(0.3)
+        os.system('clear')
+        print('escolhendo o primeiro a jogar.....')
+        sleep(0.3)
+        os.system('clear')
 
     first = random.choice(players)
     
@@ -34,27 +39,22 @@ def first_player():
 
 # change the player each turn
 def change_player(player):
-    print(player)
+    try:
     
-    if player["player"] == "1":
-        next_to_play = players[1]
-        print(next_to_play)
-    elif player["player"] == "2":
-        next_to_play = players[0]
-        print(next_to_play)
-    else:
-        print('FUNCTION ERROR: invalid player!')
-        
-    return next_to_play
+        if player["player"] == "1":
+            next_to_play = players[1]
+            
+        elif player["player"] == "2":
+            next_to_play = players[0]
+            
+        return next_to_play
 
+    except valueError as e:
+        raise e 
 
-# update the game screen
-def update_screen():
-    for i in range(1, len(screen)+1):
-        print(screen[f"linha_{i}"])
 
 # transform the line into a list to change the values
-def line_transformer(line, player_option):
+def line_to_list(line, player_option):
     line_copy = screen[f"linha_{line}"]
     line_split = line_copy.split()
     separador = '  '
@@ -110,3 +110,8 @@ def update_linha(line_to_update: list, line_number):
     for i in line_to_update:
         update_line += i
     screen[f"linha_{line_number}"] = update_line
+
+# update the game screen
+def update_screen():
+    for i in range(1, len(screen)+1):
+        print(screen[f"linha_{i}"])

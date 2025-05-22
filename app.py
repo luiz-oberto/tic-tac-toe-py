@@ -1,3 +1,4 @@
+from game_screen import screen
 import game_functions as func
 import os
 
@@ -9,22 +10,27 @@ while True:
     print(f'Vez de: {next_to_play["mark"]}')
     func.update_screen()
     option = input('Selecione um número de 1 a 9 para marcar: ')
+    print(option)
 
-    if option == '1' or option == '2' or option == '3':
+    if option == '':
+        print('Insira um valor válido!')
+        continue
+
+    elif option in screen["linha_2"]:
         option_in_line = 2
-        linha = func.line_transformer(option_in_line, option)
+        linha = func.line_to_list(option_in_line, option)
         modified_line = func.mark_one(option_in_line, linha, option, next_to_play)
         func.update_linha(modified_line, option_in_line)
                 
-    elif option == '4' or option == '5' or option == '6':
+    elif option in screen["linha_5"]:
         option_in_line = 5
-        linha = func.line_transformer(option_in_line, option)
+        linha = func.line_to_list(option_in_line, option)
         modified_line = func.mark_one(option_in_line, linha, option, next_to_play)
         func.update_linha(modified_line, option_in_line)
 
-    elif option == '7' or option == '8' or option == '9':
+    elif option in screen["linha_8"]:
         option_in_line = 8
-        linha = func.line_transformer(option_in_line, option)
+        linha = func.line_to_list(option_in_line, option)
         modified_line = func.mark_one(option_in_line, linha, option, next_to_play)
         func.update_linha(modified_line, option_in_line)
         
