@@ -1,0 +1,8 @@
+# TODO list
+
+- implementar em testes.py a função de verificar a diagonal do tabuleiro
+- definir como implementar a lógica do testes.py no app.py
+	- quais alterações fazer
+	- adaptações
+
+- implementar o algoritmo ao main
